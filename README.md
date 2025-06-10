@@ -19,4 +19,4 @@ El script imprimirá la respuesta devuelta por la API.
 3. Desde este directorio, ejecute `vercel` y siga las instrucciones en pantalla.
 4. Al finalizar el despliegue, abra la URL proporcionada para ver la página y la API en funcionamiento.
 
-El archivo `vercel.json` define la versión del proyecto y que las funciones dentro de `api/` se ejecutan con Python 3.9. También expone la ruta `/api/imagenologia` y permite servir cualquier recurso de la carpeta `public` como contenido estático.
+El archivo `vercel.json` define la versión del proyecto y que las funciones dentro de `api/` se ejecutan con `vercel-python@3.9`. También expone la ruta `/api/imagenologia` y permite servir cualquier recurso de la carpeta `public` como contenido estático.
