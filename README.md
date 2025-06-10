@@ -19,4 +19,4 @@ El script imprimirá la respuesta devuelta por la API.
 3. Desde este directorio, ejecute `vercel` y siga las instrucciones en pantalla.
 4. Al finalizar el despliegue, abra la URL proporcionada para ver la página y la API en funcionamiento.
 
-El archivo `vercel.json` ya configura `public/index.html` como página principal y define la función de Python con la propiedad `functions` para usar el runtime 3.9. La ruta `/api/imagenologia` accede a ese handler.
+El archivo `vercel.json` especifica que las funciones dentro de `api/` se ejecutan con el runtime de Python 3.9. Vercel se encarga de servir automáticamente la carpeta `public` como contenido estático y de exponer la API definida en `api/imagenologia.py`.
