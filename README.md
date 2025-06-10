@@ -11,3 +11,12 @@ python app.py
 ```
 
 El script imprimirá la respuesta devuelta por la API.
+
+## Despliegue en Vercel
+
+1. Instale la [CLI de Vercel](https://vercel.com/docs/cli) con `npm i -g vercel`.
+2. Ejecute `vercel login` para autenticar su cuenta.
+3. Desde este directorio, ejecute `vercel` y siga las instrucciones en pantalla.
+4. Al finalizar el despliegue, abra la URL proporcionada para ver la página y la API en funcionamiento.
+
+El archivo `vercel.json` ya configura `public/index.html` como página principal y define la función de Python con la propiedad `functions` para usar el runtime 3.9. La ruta `/api/imagenologia` accede a ese handler.

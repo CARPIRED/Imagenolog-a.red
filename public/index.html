@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- Página principal para probar la API desplegada en Vercel -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Imagenología Médica</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+      }
+      #resultado {
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Encabezado principal -->
+    <h1>Bienvenido a Imagenología Médica</h1>
+    <!-- Breve descripción -->
+    <p>Esta aplicación demuestra una API sencilla desplegada en Vercel.</p>
+    <button id="probar">Probar API</button>
+    <pre id="resultado"></pre>
+
+    <script>
+      document.getElementById("probar").addEventListener("click", async () => {
+        const resp = await fetch("/api/imagenologia");
+        const text = await resp.text();
+        document.getElementById("resultado").textContent = text;
+      });
+    </script>
+  </body>
+</html>
