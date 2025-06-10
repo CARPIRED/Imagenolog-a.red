@@ -1,4 +1,5 @@
 """API simple para Vercel escrita en Python 3.9"""
+# Archivo compatible con Python 3.9 para su ejecución en Vercel
 
 # Importamos BaseHTTPRequestHandler para manejar las solicitudes HTTP
 from http.server import BaseHTTPRequestHandler

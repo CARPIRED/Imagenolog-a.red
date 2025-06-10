@@ -5,7 +5,7 @@ Imagenología Médica Clínica Basada en la Evidencia
 
 1. Coloque su clave de API de OpenAI en la variable de entorno `OPENAI_API_KEY`.
 2. Ejecute el script `app.py` para enviar el prompt de imagenología médica al modelo.
-   
+
 ```bash
 python app.py
 ```
@@ -19,4 +19,4 @@ El script imprimirá la respuesta devuelta por la API.
 3. Desde este directorio, ejecute `vercel` y siga las instrucciones en pantalla.
 4. Al finalizar el despliegue, abra la URL proporcionada para ver la página y la API en funcionamiento.
 
-El archivo `vercel.json` especifica que las funciones dentro de `api/` se ejecutan con el runtime de Python 3.9. Vercel se encarga de servir automáticamente la carpeta `public` como contenido estático y de exponer la API definida en `api/imagenologia.py`.
+El archivo `vercel.json` define la versión del proyecto y que las funciones dentro de `api/` se ejecutan con Python 3.9. También expone la ruta `/api/imagenologia` y permite servir cualquier recurso de la carpeta `public` como contenido estático.
