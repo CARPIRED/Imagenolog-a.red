@@ -1,4 +1,5 @@
 import os
+import sys
 from openai import OpenAI
 
 PROMPT = """### **Prompt Maestro para GPT Especializado en Imagenología Médica Clínica Avanzada**
@@ -17,24 +18,28 @@ def main():
 
     client = OpenAI(api_key=api_key)
 
-    response = client.responses.create(
-        model="o4-mini",
-        input=[
-            {
-                "role": "developer",
-                "content": [
-                    {
-                        "type": "input_text",
-                        "text": PROMPT
-                    }
-                ]
-            }
-        ],
-        text={"format": {"type": "text"}},
-        reasoning={"effort": "medium"},
-        tools=[{"type": "file_search", "vector_store_ids": ["vs_6848850241cc8191bbf5cd074e33db5e"]}],
-        store=True,
-    )
+    try:
+        response = client.responses.create(
+            model="o4-mini",
+            input=[
+                {
+                    "role": "developer",
+                    "content": [
+                        {
+                            "type": "input_text",
+                            "text": PROMPT
+                        }
+                    ]
+                }
+            ],
+            text={"format": {"type": "text"}},
+            reasoning={"effort": "medium"},
+            tools=[{"type": "file_search", "vector_store_ids": ["vs_6848850241cc8191bbf5cd074e33db5e"]}],
+            store=True,
+        )
+    except Exception as exc:
+        print(f"Error al llamar a OpenAI: {exc}", file=sys.stderr)
+        sys.exit(1)
 
     print(response)
 
