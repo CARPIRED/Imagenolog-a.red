@@ -34,3 +34,18 @@ Si desea exponer la API en la nube, ejecute el comando de despliegue de Vercel e
 ```bash
 vercel --prod
 ```
+
+### Uso de la API
+
+Una vez desplegada, la función puede invocarse en `/api/imagenologia`.
+Prueba la respuesta con `curl`:
+
+```bash
+curl "https://<tu-deploy>.vercel.app/api/imagenologia"
+```
+
+La respuesta será un mensaje de texto similar a:
+
+```
+Respuesta de la API de imagenología
+```
