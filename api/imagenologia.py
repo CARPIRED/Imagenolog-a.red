@@ -2,20 +2,32 @@
 
 # Importamos BaseHTTPRequestHandler para manejar las solicitudes HTTP
 from http.server import BaseHTTPRequestHandler
+from urllib.parse import urlparse, parse_qs
+import json
 
 
 class handler(BaseHTTPRequestHandler):
     """Manejador principal de la función"""
 
     def do_GET(self):
-        """Responde a una solicitud GET con un mensaje simple"""
-        # Indicamos que la respuesta fue exitosa
-        self.send_response(200)
+        """Responde a una solicitud GET aceptando un parámetro 'prompt'."""
+        # Parseamos los parámetros de la URL
+        query_components = parse_qs(urlparse(self.path).query)
+        prompt = query_components.get("prompt", [None])[0]
 
-        # Establecemos las cabeceras de la respuesta
-        self.send_header("Content-type", "text/plain; charset=utf-8")
+        if not prompt:
+            # Si el parámetro falta o está vacío, respondemos con error
+            self.send_response(400)
+            self.send_header("Content-type", "application/json; charset=utf-8")
+            self.end_headers()
+            respuesta = {"error": "Falta el parámetro 'prompt'"}
+            self.wfile.write(json.dumps(respuesta).encode("utf-8"))
+            return
+
+        # Si el parámetro está presente, devolvemos un mensaje de éxito
+        self.send_response(200)
+        self.send_header("Content-type", "application/json; charset=utf-8")
         self.end_headers()
 
-        # Enviamos el cuerpo de la respuesta
-        mensaje = "Respuesta de la API de imagenología"
-        self.wfile.write(mensaje.encode("utf-8"))
+        respuesta = {"prompt": prompt, "mensaje": "Solicitud recibida"}
+        self.wfile.write(json.dumps(respuesta).encode("utf-8"))
